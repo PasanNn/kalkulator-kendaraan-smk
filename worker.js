@@ -102,6 +102,16 @@ async function ensureSchema(env) {
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(user_id) REFERENCES app_users(id) ON DELETE CASCADE
   )`).run();
+
+  // Bootstrap akun admin otomatis saat database masih kosong.
+  // Ini memastikan login awal tetap bisa dibuat tanpa membuka endpoint bootstrap secara manual.
+  const count = await env.DB.prepare('SELECT COUNT(*) AS n FROM app_users').first('n');
+  if (Number(count) === 0) {
+    const passwordHash = await hashPassword('admin123');
+    await env.DB.prepare(
+      'INSERT INTO app_users(username,password_hash,role) VALUES(?,?,?)'
+    ).bind('admin', passwordHash, 'admin').run();
+  }
 }
 
 async function currentUser(env, request) {
