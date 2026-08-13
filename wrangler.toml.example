@@ -1,0 +1,9 @@
+name = "kalkulator-kendaraan"
+compatibility_date = "2026-08-13"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "kalkulator-kendaraan-db"
+database_id = "GANTI_DENGAN_DATABASE_ID_D1"
+
+# Untuk Pages, folder project harus berisi index.html dan functions/.
