@@ -15,5 +15,3 @@ CREATE TABLE IF NOT EXISTS app_sessions (
   created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY(user_id) REFERENCES app_users(id) ON DELETE CASCADE
 );
-CREATE INDEX IF NOT EXISTS idx_app_sessions_token ON app_sessions(token_hash);
-CREATE INDEX IF NOT EXISTS idx_app_sessions_expiry ON app_sessions(expires_at);

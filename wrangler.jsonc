@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "kalkulator-kendaraan-smk",
+  "main": "worker.js",
+  "compatibility_date": "2026-08-13",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "kalkulator-kendaraan-db",
+      "database_id": "fe278d4b-0d16-4a5a-b58e-c805b2930b02"
+    }
+  ]
+}
